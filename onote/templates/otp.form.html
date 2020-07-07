@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Signin Template for Bootstrap</title>
+        <!-- Bootstrap core CSS -->
+        <link href="static/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="static/sign-in.css" rel="stylesheet">
+    </head>
+    <body class="text-center">
+    <form method="POST" action="/">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name(size=20) }}
+    <input type="submit" value="Go">
+</form>
+        <form class="login-form" method="post" action="/otp">
+            {{ form.hidden_tag() }}
+            <img class="mb-4" src="static/icon-75.png" alt="" width="80" height="115">
+            <h1 class="h3 mb-3 font-weight-normal">Сообщение запаролено!</h1>
+            {% if form.username.errors %}
+                <p class="red-text">Допущены ошибки!</p>
+                <ul class="errors">
+                    {% for error in form.username.errors %}
+                        <li class="error">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <br>
+            {{ form.password.label }} {{ form.password(size=32) }}
+
+                <!--
+            <input type="text" id="inputEmail" class="form-control" required autofocus name="user" placeholder="Имя пользователя" value="default">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" required name="pass" placeholder="Пароль">
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"{% if session.remember %} checked{%endif%}> Запомни меня
+                </label>
+            </div>
+            -->
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Открыть</button>
+            <div class="mb-3">
+                <p>
+                    <br>
+                    <a class="red-text" href="/cancel">Отмена</a>
+                </p>
+            </div>
+            <p class="mt-5 mb-3 text-muted">&copy; 2320 by Sabaka</p>
+        </form>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="static/assets/js/jquery.min.js"></script>
+        <script src="static/assets/js/popper.js"></script>
+        <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>

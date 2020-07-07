@@ -1,0 +1,39 @@
+version: '2'
+services:
+  onote_db:
+    build: ./onote_db
+    image: onote_db
+    container_name: onote_db
+    hostname: onote_db
+    restart: always
+    networks:
+      - onote_network
+    volumes:
+      - ./db:/var/lib/mysql      
+    environment:
+      MYSQL_ROOT_PASSWORD: onote
+      MYSQL_DATABASE: onote
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+  onote_web:
+    build: ./onote_web
+    image: onote_web
+    container_name: onote_web
+    hostname: onote_web
+    restart: always
+    networks:
+      - onote_network
+    depends_on:
+      - onote_db
+    volumes:
+      - ../onote:/app
+    expose:
+      - 5000
+    ports:
+      - 5000:5000
+    working_dir: /app
+    command: ['python', 'app.py']
+networks:
+  onote_network:

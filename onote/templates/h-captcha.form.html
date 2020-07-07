@@ -1,0 +1,21 @@
+{%  block h-captcha-events %}
+<script type="text/javascript">
+    beforeSubmit = function(){
+
+        $("#formid").submit();
+    }
+</script>
+{%  endblock %}
+{%  block h-captcha-submit %}
+          <div id="hcaptcha" class="h-captcha"
+              data-sitekey="your_site_key"
+              data-callback="onSubmit"
+              data-size="invisible"></div>
+          <button id='submit'>submit</button>
+{%  endblock %}
+
+{%  block h-captcha-element %}
+{%  endblock %}
+{%  block h-captcha-element %}
+{%  endblock %}
+

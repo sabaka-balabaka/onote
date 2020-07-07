@@ -1,0 +1,7 @@
+ConfigParser
+mysqlclient
+Flask
+Flask-sqlalchemy
+Flask-login
+Flask-WTF
+
